@@ -256,7 +256,7 @@ const exercicio15 = () => {
     result.innerHTML = ` vogais ${vogais} consoante ${consoante} <br>`;
   }
 };
-
+ 
 const exercicio16 = () => {
   let num1 = document.getElementById("num1").value;
   let result = document.getElementById("resultado");
@@ -344,4 +344,112 @@ const exercicio20 = () => {
     error.innerText = "";
   }
 };
+
+const exercicio21 = () => {
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  let frase = document.getElementById("frase").value;
+
+  if (frase === "") {
+    error.innerText = "INSIRIR FRASE";
+    result.innerText = "";
+  } else {
+    function removerEspacos(frase) {
+      let novaFrase = "";
+      for (let i = 0; i < frase.length; i++) {
+        if (frase[i] !== ` `) novaFrase += frase[i];
+      }
+      return novaFrase;
+    }
+
+    let fraseE = removerEspacos(frase);
+    result.innerText = `${fraseE}`;
+    error.innerText = "";
+  }
+};
+
+let soma = 0;
+const exercicio22 = () => {
+  let num = document.getElementById("num").value;
+  let result = document.getElementById("resultado");
+  let error = document.getElementById("erro");
+  error.innerText = "";
+  result.innerText = "";
+
+  if (soma <= 100) {
+    soma += parseInt(num);
+    result.innerText = ` A soma dos numeros é ${soma}`;
+  } else {
+    result.innerText = "";
+    error.innerText = `A soma dos numeros que foi informado ja deu 100, recomeçe!!`;
+  }
+};
+
+const exercicio23 = () => {
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  let frase = document.getElementById("frase").value;
+  let palavra = document.getElementById("palavra").value;
+  let cont = 0;
+
+
+
+  if (!isNaN(palavra) || !isNaN(frase)) {
+    error.innerText = "Não aceito números";
+    result.innerText = "";
+  } else {
+    frase = frase.toLowerCase();
+    palavra = palavra.toLowerCase();
+    let palavras = frase.split(" ");
+
+    for (var i = 0; i < palavras.length; i++) {
+      if (palavras[i] == palavra) {
+        cont++;
+      }
+    }
+
+    result.innerHTML = `A palavra ${palavra} aparece ${cont} vezes na frase.`;
+    error.innerText = ""
+  }
+};
+
+const exercicio24 = () => {
+let result = document.getElementById("resultado")
+let error = document.getElementById("erro")
+let fraseM = document.getElementById("frase").value
+let frase = fraseM.split(" ")
+const letraMaisc = [];
+error.innerText = "";
+result.innerText = "";
+
+if (fraseM == "") {
+  error.innerText = "Informe uma frase";
+} else {
+  const mudarFrase = frase.map((palavra) => {
+    const pLetraM = palavra[0].toUpperCase();
+    letraMaisc.push(pLetraM)
+    return pLetraM +palavra.slice(1);
+  });
+  result.innerHTML = `${mudarFrase.join(" ")}`
+}
+}
+
+const exercicio25  = () => {
+let num1 = document.getElementById("num1").value
+let num2 = document.getElementById("num2").value
+let num3 = document.getElementById("num3").value
+let result = document.getElementById("resposta")
+let array = []
+result.innerHTML = ""
+
+array.push(num1);
+array.push(num2);
+array.push(num3);
+array.sort((a, b) => a - b );
+
+
+ for (let i = 0; i <= 2; i++) {
+    result.innerText += ` ${array[i]}, `
+  }
+}
 
