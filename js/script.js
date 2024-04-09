@@ -171,13 +171,13 @@ const exercicio12 = () => {
 };
 
 const exercicio13 = () => {
-  let num1 = document.getElementById("num1").value;
-  let num2 = document.getElementById("num2").value;
+  let num1 = Number(document.getElementById("num1").value); //number = passar para tudo que ta la dentro para numeral 
+  let num2 = Number(document.getElementById("num2").value);
   let result = document.getElementById("resultado");
   let error = document.getElementById("erro");
   let maior, menor;
 
-  if (num1 < num2) {
+  if (num1 <= num2) {
     menor = num1;
     maior = num2;
   } else {
@@ -196,7 +196,7 @@ const exercicio13 = () => {
     for (let i = menor; i <= maior; i++) {
       let teste = verificaPrimo(i);
       if (teste) {
-        result.innerText += ` ${i}`;
+        result.innerText += `#${i} `;
       }
     }
   }
@@ -256,7 +256,7 @@ const exercicio15 = () => {
     result.innerHTML = ` vogais ${vogais} consoante ${consoante} <br>`;
   }
 };
- 
+
 const exercicio16 = () => {
   let num1 = document.getElementById("num1").value;
   let result = document.getElementById("resultado");
@@ -377,7 +377,7 @@ const exercicio22 = () => {
   result.innerText = "";
 
   if (soma <= 100) {
-    soma += parseInt(num);
+    soma += parseInt(num); //passar para inteiro a validação, podemos usar tbm o number passa tanto para inteiro ou front (numeros com virgula)
     result.innerText = ` A soma dos numeros é ${soma}`;
   } else {
     result.innerText = "";
@@ -391,8 +391,6 @@ const exercicio23 = () => {
   let frase = document.getElementById("frase").value;
   let palavra = document.getElementById("palavra").value;
   let cont = 0;
-
-
 
   if (!isNaN(palavra) || !isNaN(frase)) {
     error.innerText = "Não aceito números";
@@ -409,47 +407,46 @@ const exercicio23 = () => {
     }
 
     result.innerHTML = `A palavra ${palavra} aparece ${cont} vezes na frase.`;
-    error.innerText = ""
+    error.innerText = "";
   }
 };
 
 const exercicio24 = () => {
-let result = document.getElementById("resultado")
-let error = document.getElementById("erro")
-let fraseM = document.getElementById("frase").value
-let frase = fraseM.split(" ")
-const letraMaisc = [];
-error.innerText = "";
-result.innerText = "";
+  let result = document.getElementById("resultado");
+  let error = document.getElementById("erro");
+  let fraseM = document.getElementById("frase").value;
+  let frase = fraseM.split(" ");
+  const letraMaisc = [];
+  error.innerText = "";
+  result.innerText = "";
 
-if (fraseM == "") {
-  error.innerText = "Informe uma frase";
-} else {
-  const mudarFrase = frase.map((palavra) => {
-    const pLetraM = palavra[0].toUpperCase();
-    letraMaisc.push(pLetraM)
-    return pLetraM +palavra.slice(1);
-  });
-  result.innerHTML = `${mudarFrase.join(" ")}`
-}
-}
-
-const exercicio25  = () => {
-let num1 = document.getElementById("num1").value
-let num2 = document.getElementById("num2").value
-let num3 = document.getElementById("num3").value
-let result = document.getElementById("resposta")
-let array = []
-result.innerHTML = ""
-
-array.push(num1);
-array.push(num2);
-array.push(num3);
-array.sort((a, b) => a - b );
-
-
- for (let i = 0; i <= 2; i++) {
-    result.innerText += ` ${array[i]}, `
+  if (fraseM == "") {
+    error.innerText = "Informe uma frase";
+  } else {
+    const mudarFrase = frase.map((palavra) => {  // map propriedade de mapeamento trazer letra por letra e etc// palavra  var de calback 
+      const pLetraM = palavra[0].toUpperCase();
+      letraMaisc.push(pLetraM);
+      return pLetraM + palavra.slice(1); //primeira letra de cada numero maiscula 
+    });
+    result.innerHTML = `${mudarFrase.join(" ")}`;
   }
-}
+};
 
+const exercicio25 = () => {
+  let num1 = document.getElementById("num1").value;
+  let num2 = document.getElementById("num2").value;
+  let num3 = document.getElementById("num3").value;
+  let result = document.getElementById("resposta");
+  let number = [];
+  result.innerHTML = "";
+
+  number.push(num1);
+  number.push(num2);
+  number.push(num3);
+  number.sort((a, b) => a - b); // sort ordenar os numeros do array
+
+  for (let i = 0; i <= 2; i++) {
+    //imprimi valores do array
+    result.innerText += ` ${number[i]}, `;
+  }
+};
